@@ -12,7 +12,7 @@ const axiosSolution = (param) => axios.get(`https://viacep.com.br/ws/${param}/js
  * @param {string} cep 
  * @returns {Promise<number | 'CEPINV'>}
  */
-export default async function calculoDoCep(cep) {
+export async function calculoDoCep(cep) {
     return __calculoDoCep(cep, axiosSolution);
 }
 
@@ -22,7 +22,7 @@ export default async function calculoDoCep(cep) {
  * @param {function (string): Promise<object>} solveViaCep 
  * @returns {Promise<number | 'CEPINV'>}
  */
-export default async function __calculoDoCep(cep, solveViaCep) {
+export async function __calculoDoCep(cep, solveViaCep) {
     const response = await solveViaCep(cep);
     
     if (response.data.erro) {
