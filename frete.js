@@ -1,13 +1,18 @@
 const axios = require('axios');
 
+/**
+ * 
+ * @param {string} param 
+ * @returns {Promise<any>}
+ */
 const axiosSolution = (param) => axios.get(`https://viacep.com.br/ws/${param}/json/`);
 
 /**
  * 
  * @param {string} cep 
- * @returns {number | 'CEPINV'}
+ * @returns {Promise<number | 'CEPINV'>}
  */
-export default async function calulaDoCep(cep) {
+export default async function calculoDoCep(cep) {
     return __calculoDoCep(cep, axiosSolution);
 }
 
@@ -15,6 +20,7 @@ export default async function calulaDoCep(cep) {
  * 
  * @param {string} cep 
  * @param {function (string): Promise<object>} solveViaCep 
+ * @returns {Promise<number | 'CEPINV'>}
  */
 export default async function __calculoDoCep(cep, solveViaCep) {
     const response = await solveViaCep(cep);

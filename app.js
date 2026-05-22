@@ -40,7 +40,7 @@ app.post('/pedidos', async (req, res) => {
 
   
   try {
-    const vrFrete = await frete.calulaDoCep(cepDestino);
+    const vrFrete = await frete.calculoDoCep(cepDestino);
 
     if (vrFrete === 'CEPINV') {
       return res.status(400).json({ erro: "CEP inválido" });
